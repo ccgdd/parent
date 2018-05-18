@@ -1,0 +1,11 @@
+com\resthome\service\FunctionService.class
+com\resthome\service\GoodsInfoService.class
+com\resthome\service\UserManagerService.class
+com\resthome\service\BedService.class
+com\resthome\service\GoodsInDetailService.class
+com\resthome\service\UserService.class
+com\resthome\service\OldManService.class
+com\resthome\service\GoodsOutDetailService.class
+com\resthome\service\RoleService.class
+com\resthome\service\UserLeaveService.class
+com\resthome\service\ContentCategoryService.class

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.resthome.mapper.ChangeRoomMapper" >
+  <resultMap id="BaseResultMap" type="com.resthome.pojo.ChangeRoom" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="oldman_name" property="oldmanName" jdbcType="VARCHAR" />
+    <result column="bed_id" property="bedId" jdbcType="INTEGER" />
+    <result column="change_bed_id" property="changeBedId" jdbcType="INTEGER" />
+    <result column="oid" property="oid" jdbcType="INTEGER" />
+    <result column="change_date" property="changeDate" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, oldman_name, bed_id, change_bed_id, oid, change_date, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.resthome.pojo.ChangeRoomExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from change_room
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from change_room
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from change_room
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.resthome.pojo.ChangeRoomExample" >
+    delete from change_room
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.resthome.pojo.ChangeRoom" >
+    insert into change_room (id, oldman_name, bed_id, 
+      change_bed_id, oid, change_date, 
+      remark)
+    values (#{id,jdbcType=VARCHAR}, #{oldmanName,jdbcType=VARCHAR}, #{bedId,jdbcType=INTEGER}, 
+      #{changeBedId,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, #{changeDate,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.resthome.pojo.ChangeRoom" >
+    insert into change_room
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="oldmanName != null" >
+        oldman_name,
+      </if>
+      <if test="bedId != null" >
+        bed_id,
+      </if>
+      <if test="changeBedId != null" >
+        change_bed_id,
+      </if>
+      <if test="oid != null" >
+        oid,
+      </if>
+      <if test="changeDate != null" >
+        change_date,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="oldmanName != null" >
+        #{oldmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="bedId != null" >
+        #{bedId,jdbcType=INTEGER},
+      </if>
+      <if test="changeBedId != null" >
+        #{changeBedId,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null" >
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="changeDate != null" >
+        #{changeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.resthome.pojo.ChangeRoomExample" resultType="java.lang.Integer" >
+    select count(*) from change_room
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update change_room
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oldmanName != null" >
+        oldman_name = #{record.oldmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bedId != null" >
+        bed_id = #{record.bedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.changeBedId != null" >
+        change_bed_id = #{record.changeBedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.oid != null" >
+        oid = #{record.oid,jdbcType=INTEGER},
+      </if>
+      <if test="record.changeDate != null" >
+        change_date = #{record.changeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update change_room
+    set id = #{record.id,jdbcType=VARCHAR},
+      oldman_name = #{record.oldmanName,jdbcType=VARCHAR},
+      bed_id = #{record.bedId,jdbcType=INTEGER},
+      change_bed_id = #{record.changeBedId,jdbcType=INTEGER},
+      oid = #{record.oid,jdbcType=INTEGER},
+      change_date = #{record.changeDate,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.resthome.pojo.ChangeRoom" >
+    update change_room
+    <set >
+      <if test="oldmanName != null" >
+        oldman_name = #{oldmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="bedId != null" >
+        bed_id = #{bedId,jdbcType=INTEGER},
+      </if>
+      <if test="changeBedId != null" >
+        change_bed_id = #{changeBedId,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null" >
+        oid = #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="changeDate != null" >
+        change_date = #{changeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.resthome.pojo.ChangeRoom" >
+    update change_room
+    set oldman_name = #{oldmanName,jdbcType=VARCHAR},
+      bed_id = #{bedId,jdbcType=INTEGER},
+      change_bed_id = #{changeBedId,jdbcType=INTEGER},
+      oid = #{oid,jdbcType=INTEGER},
+      change_date = #{changeDate,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

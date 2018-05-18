@@ -1,0 +1,290 @@
+@CHARSET "UTF-8";
+
+.easyui-accordion ul{list-style-type:none;margin:0px; padding:10px;}
+.easyui-accordion ul li{ padding:0px;}
+.easyui-accordion ul li a{line-height:24px;}
+.easyui-accordion ul li div{margin:2px 0px;padding-left:10px;padding-top:2px;}
+.easyui-accordion ul li div.hover{border:1px dashed #00ff80; background:#E0ECFF;cursor:pointer;}
+.easyui-accordion ul li div.hover a{color:#416AA3;}
+.easyui-accordion ul li div.selected{border:1px solid #99BBE8; background:#E0ECFF;cursor:default;}
+.easyui-accordion ul li div.selected a{color:#416AA3; font-weight:bold;}
+
+html {
+    border: 0 none;
+    height: 100%;
+    overflow: auto;
+}
+body {
+    border: 0 none;
+    height: 100%;
+    line-height: 1;
+}
+#mainWrapper, .center {
+    margin: 0 auto;
+}
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, img, b, u, i, dl, dt, dd, ol, ul, li, form, label, th, td {
+    font-size: 100%;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+}
+body, input, select, textarea, th, td, div, fieldset, blockquote, p {
+    font-family: arial,sans-serif;
+    font-size: 12px;
+}
+input, textarea {
+    font-size: 13px;
+}
+input[type="text"], input[type="password"], textarea {
+    border: 1px solid #7F9DB9;
+    padding: 2px;
+}
+input[type="text"], input[type="password"], select, textarea {
+    margin-top: 2px;
+}
+.readonly, input[readonly], input[disabled], textarea[readonly], textarea[disabled] {
+    background-color: #E8E8E8;
+    color: #555555;
+}
+.focus, input:focus, select:focus, textarea:focus {
+    outline: 1px solid red;
+}
+a:link {
+    color: #0000FF;
+}
+a:visited {
+    color: #0000FF;
+}
+a:hover {
+    color: #FF0000;
+}
+.left {
+    display: inline;
+    float: left;
+}
+.right {
+    display: inline;
+    float: right;
+}
+.clear {
+    clear: both;
+}
+div.hr {
+    border: 1px solid #99CCFF;
+    clear: both;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    margin: 2px;
+    padding: 0;
+}
+button, input[type="button"] {
+    background: none repeat scroll 0 0 #ECF1FB;
+    border: 1px solid #7F9DB9;
+    padding: 2px;
+}
+button:hover, input[type="button"]:hover {
+    background: none repeat scroll 0 0 lightblue;
+    border: 1px solid #FF0000;
+    cursor: pointer;
+    padding: 2px;
+}
+.table-edit {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.table-edit tr {
+    height: 22px;
+}
+.table-edit td {
+    border-color: #CCCCCC;
+    border-style: none none dashed;
+    border-width: 0 0 1px;
+    padding: 5px;
+}
+.table-edit .title {
+    background-color: #CCCCFF;
+}
+.title {
+    background: url("../images/title.png") repeat-x scroll 0 0 transparent;
+    height: 26px;
+}
+td span.combobox {
+    margin-top: 2px;
+}
+input.combobox-text {
+    margin: 0;
+}
+input.combotree-text[readonly] {
+    background: none repeat scroll 0 0 window;
+}
+input.combotree-text[disabled] {
+    background: none repeat scroll 0 0 #E8E8E8;
+}
+div.menu-item {
+    border: 0 none;
+}
+div.combobox-content {
+    cursor: pointer;
+}
+div.tree-node {
+    height: 23px;
+}
+
+
+
+/*
+	@eric
+*/
+* {
+	font-size: 12px;
+	font-family: Tahoma, Verdana, 微软雅黑, 宋体
+}
+body {
+	background: #D2E0F2;
+}
+
+input {
+/* 	width: 140px; */
+	vertical-align: middle;
+	padding: 2px 2px 2px 2px;
+	border-width: 1px;
+	border-left: 1px solid #B2B2B2;
+	border-top: 1px solid #B2B2B2;
+	border-bottom: 1px solid #B2B2B2;
+	border-right: 1px solid #B2B2B2;
+}
+textarea {
+	padding: 0px;
+	overflow-y: auto;
+	border: 1px solid #B2B2B2;
+}
+
+input[readonly] {
+	background-color: #EBEBE4;
+}
+.radio {
+	margin: 0;
+	padding: 0;
+	width: 14px;
+	height: 14px;
+	border: 0px;
+}
+a {
+	color: Black;
+	text-decoration: none;
+}
+a:hover {
+	color: Red;
+	text-decoration: underline;
+}
+
+#body {
+	border: 0;
+	padding: 3px;
+	overflow: hidden;
+}
+#search_area {
+	margin-bottom: 3px;
+	border: 1px solid #99BBE8;
+	background-color: #EFEFEF;
+}
+#openOrClose {
+	display: block;
+	cursor: pointer;
+	background: url(../images/open.jpg) 0 0 no-repeat;
+	margin: 0px auto;
+	padding: 0px;
+	width: 50px;
+	height: 5px;
+	overflow: hidden;
+	text-indent: -999px;
+}
+.footer {
+	text-align: center;
+	color: #15428B;
+	margin: 0px;
+	padding: 0px;
+	line-height: 23px;
+	font-weight: bold;
+}
+
+
+.windowButton {
+	text-align: right;
+	position: absolute;
+	bottom: 10px;
+	right: 7px;
+}
+.showWindowButton {
+	display:block;
+	width:100%;
+	border:0px solid red;
+	text-align: center;
+	height: auto;
+	line-height: 30px;
+	position: absolute;
+	bottom: 10px;
+	/*right: 7px;*/
+	margin: 0 auto;
+}
+.showDetail {
+	color: blue;
+	text-decoration: underline;
+}
+.clearable {
+	background-color: #EBEBE4;
+}
+
+.my-dialog-button {
+	margin-right: 3px;
+	border: 1px solid #ccc !important;
+	padding: 0 5px 0 0 !important;
+}
+.my-search-button {
+	margin-right: 3px;
+	border: 1px solid #ccc !important;
+	padding: 0 5px 0 0 !important;
+	background: url('../images/button_plain_hover.png') repeat-x !important;	
+}
+
+.x {
+	color: #FF0000;
+}
+#parent_win {
+	display:block;
+	overflow:hidden;
+}
+.northTitle {
+	font-family:'微软雅黑';
+	font-size:24px;
+	font-weight:bold;
+	height:60px;
+	line-height:40px;
+}
+.loginInfo {
+	border:0px solid red;
+	display:block;
+	position:absolute;
+	bottom:5px;
+	right:10px;
+}
+#sysVersion{
+	border:0px solid red;
+	height:25px;
+	overflow:hidden;
+	position:absolute;
+	left:10px;
+}
+#nowTime{
+	border:0px solid red;
+	height:25px;
+	width:200px;
+	text-align:left;
+	overflow:hidden;
+	position:absolute;
+	right:10px;
+}
+#conditon{
+	overflow:hidden;
+}

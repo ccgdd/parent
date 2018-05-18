@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.resthome.mapper.GoodsInMapper" >
+  <resultMap id="BaseResultMap" type="com.resthome.pojo.GoodsIn" >
+    <id column="in_code" property="inCode" jdbcType="INTEGER" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="in_date" property="inDate" jdbcType="DATE" />
+    <result column="handled_name" property="handledName" jdbcType="VARCHAR" />
+    <result column="person_name" property="personName" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    in_code, source, address, in_date, handled_name, person_name, user_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.resthome.pojo.GoodsInExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods_in
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods_in
+    where in_code = #{inCode,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods_in
+    where in_code = #{inCode,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.resthome.pojo.GoodsInExample" >
+    delete from goods_in
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.resthome.pojo.GoodsIn" >
+    insert into goods_in (in_code, source, address, 
+      in_date, handled_name, person_name, 
+      user_id)
+    values (#{inCode,jdbcType=INTEGER}, #{source,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{inDate,jdbcType=DATE}, #{handledName,jdbcType=VARCHAR}, #{personName,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.resthome.pojo.GoodsIn" >
+    insert into goods_in
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inCode != null" >
+        in_code,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="inDate != null" >
+        in_date,
+      </if>
+      <if test="handledName != null" >
+        handled_name,
+      </if>
+      <if test="personName != null" >
+        person_name,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inCode != null" >
+        #{inCode,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="inDate != null" >
+        #{inDate,jdbcType=DATE},
+      </if>
+      <if test="handledName != null" >
+        #{handledName,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null" >
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.resthome.pojo.GoodsInExample" resultType="java.lang.Integer" >
+    select count(*) from goods_in
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update goods_in
+    <set >
+      <if test="record.inCode != null" >
+        in_code = #{record.inCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.source != null" >
+        source = #{record.source,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inDate != null" >
+        in_date = #{record.inDate,jdbcType=DATE},
+      </if>
+      <if test="record.handledName != null" >
+        handled_name = #{record.handledName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personName != null" >
+        person_name = #{record.personName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update goods_in
+    set in_code = #{record.inCode,jdbcType=INTEGER},
+      source = #{record.source,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      in_date = #{record.inDate,jdbcType=DATE},
+      handled_name = #{record.handledName,jdbcType=VARCHAR},
+      person_name = #{record.personName,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.resthome.pojo.GoodsIn" >
+    update goods_in
+    <set >
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="inDate != null" >
+        in_date = #{inDate,jdbcType=DATE},
+      </if>
+      <if test="handledName != null" >
+        handled_name = #{handledName,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null" >
+        person_name = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where in_code = #{inCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.resthome.pojo.GoodsIn" >
+    update goods_in
+    set source = #{source,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      in_date = #{inDate,jdbcType=DATE},
+      handled_name = #{handledName,jdbcType=VARCHAR},
+      person_name = #{personName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR}
+    where in_code = #{inCode,jdbcType=INTEGER}
+  </update>
+  <!-- 一对多查询 -->
+  <resultMap id="goodsindetail" type="com.resthome.pojo.GoodsIn" >
+    <id column="in_code" property="inCode" jdbcType="INTEGER" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="in_date" property="inDate" jdbcType="DATE" />
+    <result column="handled_name" property="handledName" jdbcType="VARCHAR" />
+    <result column="person_name" property="personName" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+  <!-- 配置一对多的关系 -->
+    <collection property="goodsInDetails"  ofType="com.resthome.pojo.GoodsInDetail">
+    	<!-- 配置主键,是关联role的唯一标识 -->
+    	<id column="goods_detail_id"  property="goodsDetailId"/>
+    	<result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+	    <result column="goods_unit" property="goodsUnit" jdbcType="VARCHAR" />
+	    <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
+	    <result column="goods_price" property="goodsPrice" jdbcType="INTEGER" />
+	    <result column="in_code" property="inCode" jdbcType="INTEGER" />
+    </collection>
+  </resultMap>
+   <sql id="goodinSql">
+		<where>
+			<if test="address != null and address != ''">
+				AND gi.address LIKE '%${address}%'
+			</if>
+			<if test="inDate != null and inDate != ''">
+				<![CDATA[  and DATE_FORMAT(gi.in_date, '%Y-%m-%d')= DATE_FORMAT(#{inDate}, '%Y-%m-%d')   ]]>      
+			</if>
+			<if test="handledName != null and handledName != ''">
+				AND gi.handled_name  LIKE '%${handledName}%'
+			</if>
+		</where>
+	</sql>
+  <!-- 配置一对多关联查询 -->
+  <select id="queryGoodsIn" resultMap="goodsindetail" parameterType="com.resthome.pojo.GoodsIn">
+<!-- 	SELECT -->
+<!-- 	gi.in_code, -->
+<!-- 	gi.address, -->
+<!-- 	gi.handled_name, -->
+<!-- 	gi.in_date, -->
+<!-- 	gi.person_name, -->
+<!-- 	gi.source, -->
+<!-- 	gi.user_id, -->
+<!-- 	gid.goods_name, -->
+<!-- 	gid.goods_num, -->
+<!-- 	gid.goods_price, -->
+<!-- 	gid.goods_unit -->
+<!-- 	FROM -->
+<!-- 		goods_in gi -->
+<!-- 	LEFT JOIN goods_in_detail gid ON gi.in_code = gid.in_code -->
+	SELECT
+	*
+	FROM
+	goods_in gi
+	<include refid="goodinSql" />
+  </select>
+</mapper>

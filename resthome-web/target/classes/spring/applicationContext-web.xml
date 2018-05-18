@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/s`chema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+<!-- 配置shiro框架的工厂对象 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	
+		<!-- 注入安全管理器对象 -->
+		<property name="securityManager" ref="securityManager"/>
+		<!-- 注入没有登录时访问的url -->
+		<property name="loginUrl" value="/login.jsp"/>	
+		<!-- 注入权限不足时访问的url页面 -->
+		<property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+		<property name="successUrl" value="/index.jsp"/>
+		<!-- 设置url拦截规则 -->
+		<property name="filterChainDefinitions" >
+			<value>
+				/css/**=anon  <!-- 匿名访问过滤器 -->
+				/js/**=anon
+				/images/**=anon
+				/validatecode.jsp=anon
+				/login.jsp*=anon
+				/useraction_login.action=anon
+				<!-- 检测当前用户是否具有oldman/edit权限,权限不足跳转到"/unauthorized.jsp" -->
+				/page_recept_oldman.action=perms["oldman-query"]
+				/*=authc  <!-- 过滤器的作用是检测用户是否登录 -->
+			</value>
+		</property>	
+	</bean>
+	
+	<!-- 注入安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="restHomeRealm"/>
+	
+	</bean>	
+	
+	<!-- 注册realm -->
+	<bean id="restHomeRealm" class="com.resthome.realm.ResthomeRealm"></bean>
+</beans> 

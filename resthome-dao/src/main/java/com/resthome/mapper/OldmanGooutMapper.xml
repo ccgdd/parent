@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.resthome.mapper.OldmanGooutMapper" >
+  <resultMap id="BaseResultMap" type="com.resthome.pojo.OldmanGoout" >
+    <id column="goout_id" property="gooutId" jdbcType="VARCHAR" />
+    <result column="begin_date" property="beginDate" jdbcType="VARCHAR" />
+    <result column="end_date" property="endDate" jdbcType="VARCHAR" />
+    <result column="with_name" property="withName" jdbcType="VARCHAR" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="handle_name" property="handleName" jdbcType="VARCHAR" />
+    <result column="oldman_id" property="oldmanId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    goout_id, begin_date, end_date, with_name, reason, handle_name, oldman_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.resthome.pojo.OldmanGooutExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from oldman_goout
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from oldman_goout
+    where goout_id = #{gooutId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from oldman_goout
+    where goout_id = #{gooutId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.resthome.pojo.OldmanGooutExample" >
+    delete from oldman_goout
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.resthome.pojo.OldmanGoout" >
+    insert into oldman_goout (goout_id, begin_date, end_date, 
+      with_name, reason, handle_name, 
+      oldman_id)
+    values (#{gooutId,jdbcType=VARCHAR}, #{beginDate,jdbcType=VARCHAR}, #{endDate,jdbcType=VARCHAR}, 
+      #{withName,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, #{handleName,jdbcType=VARCHAR}, 
+      #{oldmanId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.resthome.pojo.OldmanGoout" >
+    insert into oldman_goout
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gooutId != null" >
+        goout_id,
+      </if>
+      <if test="beginDate != null" >
+        begin_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="withName != null" >
+        with_name,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="handleName != null" >
+        handle_name,
+      </if>
+      <if test="oldmanId != null" >
+        oldman_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gooutId != null" >
+        #{gooutId,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null" >
+        #{beginDate,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=VARCHAR},
+      </if>
+      <if test="withName != null" >
+        #{withName,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="handleName != null" >
+        #{handleName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldmanId != null" >
+        #{oldmanId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.resthome.pojo.OldmanGooutExample" resultType="java.lang.Integer" >
+    select count(*) from oldman_goout
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update oldman_goout
+    <set >
+      <if test="record.gooutId != null" >
+        goout_id = #{record.gooutId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.beginDate != null" >
+        begin_date = #{record.beginDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endDate != null" >
+        end_date = #{record.endDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.withName != null" >
+        with_name = #{record.withName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reason != null" >
+        reason = #{record.reason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleName != null" >
+        handle_name = #{record.handleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oldmanId != null" >
+        oldman_id = #{record.oldmanId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update oldman_goout
+    set goout_id = #{record.gooutId,jdbcType=VARCHAR},
+      begin_date = #{record.beginDate,jdbcType=VARCHAR},
+      end_date = #{record.endDate,jdbcType=VARCHAR},
+      with_name = #{record.withName,jdbcType=VARCHAR},
+      reason = #{record.reason,jdbcType=VARCHAR},
+      handle_name = #{record.handleName,jdbcType=VARCHAR},
+      oldman_id = #{record.oldmanId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.resthome.pojo.OldmanGoout" >
+    update oldman_goout
+    <set >
+      <if test="beginDate != null" >
+        begin_date = #{beginDate,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=VARCHAR},
+      </if>
+      <if test="withName != null" >
+        with_name = #{withName,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="handleName != null" >
+        handle_name = #{handleName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldmanId != null" >
+        oldman_id = #{oldmanId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goout_id = #{gooutId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.resthome.pojo.OldmanGoout" >
+    update oldman_goout
+    set begin_date = #{beginDate,jdbcType=VARCHAR},
+      end_date = #{endDate,jdbcType=VARCHAR},
+      with_name = #{withName,jdbcType=VARCHAR},
+      reason = #{reason,jdbcType=VARCHAR},
+      handle_name = #{handleName,jdbcType=VARCHAR},
+      oldman_id = #{oldmanId,jdbcType=INTEGER}
+    where goout_id = #{gooutId,jdbcType=VARCHAR}
+  </update>
+  
+
+   <sql id="oldmanGoout">
+		<where>
+			<if test="name != null and name != ''">
+				AND o.name LIKE '%${name}%'
+			</if>
+			<if test="beginDate != null and beginDate != ''">
+				<![CDATA[  and DATE_FORMAT(og.begin_date, '%Y-%m-%d')= DATE_FORMAT(#{beginDate}, '%Y-%m-%d')   ]]>      
+			</if>
+			<if test="endDate != null and endDate != ''">
+				<![CDATA[  and DATE_FORMAT(og.end_date, '%Y-%m-%d')= DATE_FORMAT(#{endDate}, '%Y-%m-%d')   ]]>      
+			</if>
+		</where>
+	</sql>
+	<!--   List<OldmanGoout> selectOldmanGoout(OldmanGoout oldmanGoout); -->
+  <!-- 配置一对多关联查询 -->
+  <select id="selectOldmanGoout" resultMap="BaseResultMap" parameterType="com.resthome.pojo.OldmanGoout">
+	SELECT  * FROM oldman_goout og LEFT JOIN oldman o ON og.oldman_id = o.id 
+	<include refid="oldmanGoout" />
+  </select>
+  
+</mapper>

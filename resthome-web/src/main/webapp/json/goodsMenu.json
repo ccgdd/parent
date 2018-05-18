@@ -1,0 +1,7 @@
+[
+		{ "id":"1001", "pId":"100", "name":"货品信息", "page":"page_goods_goods-info.action"},
+		{ "id":"1001", "pId":"100", "name":"货品入库", "page":"page_goods_goods-in.action"},
+		{ "id":"1001", "pId":"100", "name":"货品出库", "page":"page_goods_goods-out.action"},
+		{ "id":"1002", "pId":"100", "name":"货品库存", "page":"page_goods_goods-stock.action"}
+]
+	

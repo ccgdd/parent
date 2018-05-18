@@ -1,0 +1,4 @@
+[
+		{ "id":"1000", "pId":"100", "name":"楼房管理", "page":"page_admin_content-category.action"},
+		{ "id":"1001", "pId":"100", "name":"床位管理", "page":"page_admin_content.action"}
+]

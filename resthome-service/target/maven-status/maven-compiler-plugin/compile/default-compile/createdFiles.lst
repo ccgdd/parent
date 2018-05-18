@@ -1,0 +1,12 @@
+com\resthome\realm\ResthomeRealm.class
+com\resthome\service\impl\UserManagerServiceImpl.class
+com\resthome\service\impl\UserLeaveServiceImpl.class
+com\resthome\service\impl\ContentCategoryServiceImpl.class
+com\resthome\service\impl\FunctionServiceImpl.class
+com\resthome\service\impl\OldManServiceImpl.class
+com\resthome\service\impl\GoodsOutDetailServiceImpl.class
+com\resthome\service\impl\GoodsInDetailServiceImpl.class
+com\resthome\service\impl\BedServiceImpl.class
+com\resthome\service\impl\GoodsInfoServiceImpl.class
+com\resthome\service\impl\RoleServiceimpl.class
+com\resthome\service\impl\UserServiceImpl.class

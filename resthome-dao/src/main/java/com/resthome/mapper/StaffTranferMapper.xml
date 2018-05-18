@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.resthome.mapper.StaffTranferMapper" >
+  <resultMap id="BaseResultMap" type="com.resthome.pojo.StaffTranfer" >
+    <id column="staff_id" property="staffId" jdbcType="INTEGER" />
+    <result column="staff_name" property="staffName" jdbcType="VARCHAR" />
+    <result column="oldDepartment" property="olddepartment" jdbcType="VARCHAR" />
+    <result column="oldPosition" property="oldposition" jdbcType="VARCHAR" />
+    <result column="tranSferDepartment" property="transferdepartment" jdbcType="VARCHAR" />
+    <result column="newPosition" property="newposition" jdbcType="VARCHAR" />
+    <result column="tranferDate" property="tranferdate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    staff_id, staff_name, oldDepartment, oldPosition, tranSferDepartment, newPosition, 
+    tranferDate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.resthome.pojo.StaffTranferExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from staff_tranfer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from staff_tranfer
+    where staff_id = #{staffId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from staff_tranfer
+    where staff_id = #{staffId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.resthome.pojo.StaffTranferExample" >
+    delete from staff_tranfer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.resthome.pojo.StaffTranfer" >
+    insert into staff_tranfer (staff_id, staff_name, oldDepartment, 
+      oldPosition, tranSferDepartment, newPosition, 
+      tranferDate)
+    values (#{staffId,jdbcType=INTEGER}, #{staffName,jdbcType=VARCHAR}, #{olddepartment,jdbcType=VARCHAR}, 
+      #{oldposition,jdbcType=VARCHAR}, #{transferdepartment,jdbcType=VARCHAR}, #{newposition,jdbcType=VARCHAR}, 
+      #{tranferdate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.resthome.pojo.StaffTranfer" >
+    insert into staff_tranfer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="staffName != null" >
+        staff_name,
+      </if>
+      <if test="olddepartment != null" >
+        oldDepartment,
+      </if>
+      <if test="oldposition != null" >
+        oldPosition,
+      </if>
+      <if test="transferdepartment != null" >
+        tranSferDepartment,
+      </if>
+      <if test="newposition != null" >
+        newPosition,
+      </if>
+      <if test="tranferdate != null" >
+        tranferDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="staffName != null" >
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="olddepartment != null" >
+        #{olddepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="oldposition != null" >
+        #{oldposition,jdbcType=VARCHAR},
+      </if>
+      <if test="transferdepartment != null" >
+        #{transferdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="newposition != null" >
+        #{newposition,jdbcType=VARCHAR},
+      </if>
+      <if test="tranferdate != null" >
+        #{tranferdate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.resthome.pojo.StaffTranferExample" resultType="java.lang.Integer" >
+    select count(*) from staff_tranfer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update staff_tranfer
+    <set >
+      <if test="record.staffId != null" >
+        staff_id = #{record.staffId,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffName != null" >
+        staff_name = #{record.staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.olddepartment != null" >
+        oldDepartment = #{record.olddepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oldposition != null" >
+        oldPosition = #{record.oldposition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transferdepartment != null" >
+        tranSferDepartment = #{record.transferdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newposition != null" >
+        newPosition = #{record.newposition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tranferdate != null" >
+        tranferDate = #{record.tranferdate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update staff_tranfer
+    set staff_id = #{record.staffId,jdbcType=INTEGER},
+      staff_name = #{record.staffName,jdbcType=VARCHAR},
+      oldDepartment = #{record.olddepartment,jdbcType=VARCHAR},
+      oldPosition = #{record.oldposition,jdbcType=VARCHAR},
+      tranSferDepartment = #{record.transferdepartment,jdbcType=VARCHAR},
+      newPosition = #{record.newposition,jdbcType=VARCHAR},
+      tranferDate = #{record.tranferdate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.resthome.pojo.StaffTranfer" >
+    update staff_tranfer
+    <set >
+      <if test="staffName != null" >
+        staff_name = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="olddepartment != null" >
+        oldDepartment = #{olddepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="oldposition != null" >
+        oldPosition = #{oldposition,jdbcType=VARCHAR},
+      </if>
+      <if test="transferdepartment != null" >
+        tranSferDepartment = #{transferdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="newposition != null" >
+        newPosition = #{newposition,jdbcType=VARCHAR},
+      </if>
+      <if test="tranferdate != null" >
+        tranferDate = #{tranferdate,jdbcType=DATE},
+      </if>
+    </set>
+    where staff_id = #{staffId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.resthome.pojo.StaffTranfer" >
+    update staff_tranfer
+    set staff_name = #{staffName,jdbcType=VARCHAR},
+      oldDepartment = #{olddepartment,jdbcType=VARCHAR},
+      oldPosition = #{oldposition,jdbcType=VARCHAR},
+      tranSferDepartment = #{transferdepartment,jdbcType=VARCHAR},
+      newPosition = #{newposition,jdbcType=VARCHAR},
+      tranferDate = #{tranferdate,jdbcType=DATE}
+    where staff_id = #{staffId,jdbcType=INTEGER}
+  </update>
+  <sql id="sfaffQueryVo">
+		<where>
+			<if test="staffTranfer.staffName != null and staffTranfer.staffName != ''">
+				AND s.staff_name LIKE '%${staffTranfer.staffName}%'
+			</if>
+			<if test="staffTranfer.transferdepartment != null and staffTranfer.transferdepartment != ''">
+				AND s.tranSferDepartment = #{staffTranfer.transferdepartment}
+			</if>
+			<if test="staffTranfer.newposition != null and staffTranfer.newposition != ''">
+				AND s.newPosition = #{staffTranfer.newposition}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 根据queryVo分页查询数据 -->
+	<select id="selectUserManager" parameterType="map"
+		resultMap="BaseResultMap">
+		  SELECT
+			*
+		  FROM
+		  staff_tranfer s
+		<include refid="sfaffQueryVo" />
+		
+	</select>
+</mapper>

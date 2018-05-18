@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.resthome.mapper.GoodsOutMapper" >
+  <resultMap id="BaseResultMap" type="com.resthome.pojo.GoodsOut" >
+    <id column="out_code" property="outCode" jdbcType="INTEGER" />
+    <result column="out_date" property="outDate" jdbcType="DATE" />
+    <result column="in_name" property="inName" jdbcType="VARCHAR" />
+    <result column="person_name" property="personName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="oid" property="oid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    out_code, out_date, in_name, person_name, remark, address, oid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.resthome.pojo.GoodsOutExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods_out
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods_out
+    where out_code = #{outCode,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods_out
+    where out_code = #{outCode,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.resthome.pojo.GoodsOutExample" >
+    delete from goods_out
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.resthome.pojo.GoodsOut" >
+    insert into goods_out (out_code, out_date, in_name, 
+      person_name, remark, address, 
+      oid)
+    values (#{outCode,jdbcType=INTEGER}, #{outDate,jdbcType=DATE}, #{inName,jdbcType=VARCHAR}, 
+      #{personName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{oid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.resthome.pojo.GoodsOut" >
+    insert into goods_out
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="outCode != null" >
+        out_code,
+      </if>
+      <if test="outDate != null" >
+        out_date,
+      </if>
+      <if test="inName != null" >
+        in_name,
+      </if>
+      <if test="personName != null" >
+        person_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="oid != null" >
+        oid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="outCode != null" >
+        #{outCode,jdbcType=INTEGER},
+      </if>
+      <if test="outDate != null" >
+        #{outDate,jdbcType=DATE},
+      </if>
+      <if test="inName != null" >
+        #{inName,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null" >
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="oid != null" >
+        #{oid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.resthome.pojo.GoodsOutExample" resultType="java.lang.Integer" >
+    select count(*) from goods_out
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update goods_out
+    <set >
+      <if test="record.outCode != null" >
+        out_code = #{record.outCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.outDate != null" >
+        out_date = #{record.outDate,jdbcType=DATE},
+      </if>
+      <if test="record.inName != null" >
+        in_name = #{record.inName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personName != null" >
+        person_name = #{record.personName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oid != null" >
+        oid = #{record.oid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update goods_out
+    set out_code = #{record.outCode,jdbcType=INTEGER},
+      out_date = #{record.outDate,jdbcType=DATE},
+      in_name = #{record.inName,jdbcType=VARCHAR},
+      person_name = #{record.personName,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      oid = #{record.oid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.resthome.pojo.GoodsOut" >
+    update goods_out
+    <set >
+      <if test="outDate != null" >
+        out_date = #{outDate,jdbcType=DATE},
+      </if>
+      <if test="inName != null" >
+        in_name = #{inName,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null" >
+        person_name = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="oid != null" >
+        oid = #{oid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where out_code = #{outCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.resthome.pojo.GoodsOut" >
+    update goods_out
+    set out_date = #{outDate,jdbcType=DATE},
+      in_name = #{inName,jdbcType=VARCHAR},
+      person_name = #{personName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      oid = #{oid,jdbcType=INTEGER}
+    where out_code = #{outCode,jdbcType=INTEGER}
+  </update>
+  
+<!-- List<GoodsOut> queryGoodsOut(GoodsOut goodsOut); -->
+   <sql id="goodoutSql">
+		<where>
+			<if test="address != null and address != ''">
+				AND go.address LIKE '%${address}%'
+			</if>
+			<if test="outDate != null and outDate != ''">
+				<![CDATA[  and DATE_FORMAT(go.out_date, '%Y-%m-%d')= DATE_FORMAT(#{outDate}, '%Y-%m-%d')   ]]>      
+			</if>
+			<if test="oid != null and oid != ''">
+				AND go.oid  = #{oid}
+			</if>
+		</where>
+	</sql>
+  <!-- 配置一对多关联查询 -->
+  <select id="queryGoodsOut" resultMap="BaseResultMap" parameterType="com.resthome.pojo.GoodsOut">
+	SELECT
+	*
+	FROM
+	goods_out go
+	<include refid="goodoutSql" />
+  </select>
+  
+  
+</mapper>

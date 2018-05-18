@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.resthome.mapper.CollectionCostMapper" >
+  <resultMap id="BaseResultMap" type="com.resthome.pojo.CollectionCost" >
+    <id column="cost_id" property="costId" jdbcType="VARCHAR" />
+    <result column="oldman_id" property="oldmanId" jdbcType="VARCHAR" />
+    <result column="collection_cost" property="collectionCost" jdbcType="VARCHAR" />
+    <result column="collection_date" property="collectionDate" jdbcType="VARCHAR" />
+    <result column="collection_name" property="collectionName" jdbcType="VARCHAR" />
+    <result column="handle_name" property="handleName" jdbcType="VARCHAR" />
+    <result column="handle_date" property="handleDate" jdbcType="VARCHAR" />
+     <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cost_id, oldman_id, collection_cost, collection_date, collection_name, handle_name, 
+    handle_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.resthome.pojo.CollectionCostExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from collection_cost
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from collection_cost
+    where cost_id = #{costId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from collection_cost
+    where cost_id = #{costId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.resthome.pojo.CollectionCostExample" >
+    delete from collection_cost
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.resthome.pojo.CollectionCost" >
+    insert into collection_cost (cost_id, oldman_id, collection_cost, 
+      collection_date, collection_name, handle_name, 
+      handle_date)
+    values (#{costId,jdbcType=VARCHAR}, #{oldmanId,jdbcType=VARCHAR}, #{collectionCost,jdbcType=VARCHAR}, 
+      #{collectionDate,jdbcType=VARCHAR}, #{collectionName,jdbcType=VARCHAR}, #{handleName,jdbcType=VARCHAR}, 
+      #{handleDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.resthome.pojo.CollectionCost" >
+    insert into collection_cost
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="costId != null" >
+        cost_id,
+      </if>
+      <if test="oldmanId != null" >
+        oldman_id,
+      </if>
+      <if test="collectionCost != null" >
+        collection_cost,
+      </if>
+      <if test="collectionDate != null" >
+        collection_date,
+      </if>
+      <if test="collectionName != null" >
+        collection_name,
+      </if>
+      <if test="handleName != null" >
+        handle_name,
+      </if>
+      <if test="handleDate != null" >
+        handle_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="costId != null" >
+        #{costId,jdbcType=VARCHAR},
+      </if>
+      <if test="oldmanId != null" >
+        #{oldmanId,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionCost != null" >
+        #{collectionCost,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionDate != null" >
+        #{collectionDate,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionName != null" >
+        #{collectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="handleName != null" >
+        #{handleName,jdbcType=VARCHAR},
+      </if>
+      <if test="handleDate != null" >
+        #{handleDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.resthome.pojo.CollectionCostExample" resultType="java.lang.Integer" >
+    select count(*) from collection_cost
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update collection_cost
+    <set >
+      <if test="record.costId != null" >
+        cost_id = #{record.costId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oldmanId != null" >
+        oldman_id = #{record.oldmanId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.collectionCost != null" >
+        collection_cost = #{record.collectionCost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.collectionDate != null" >
+        collection_date = #{record.collectionDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.collectionName != null" >
+        collection_name = #{record.collectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleName != null" >
+        handle_name = #{record.handleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleDate != null" >
+        handle_date = #{record.handleDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update collection_cost
+    set cost_id = #{record.costId,jdbcType=VARCHAR},
+      oldman_id = #{record.oldmanId,jdbcType=VARCHAR},
+      collection_cost = #{record.collectionCost,jdbcType=VARCHAR},
+      collection_date = #{record.collectionDate,jdbcType=VARCHAR},
+      collection_name = #{record.collectionName,jdbcType=VARCHAR},
+      handle_name = #{record.handleName,jdbcType=VARCHAR},
+      handle_date = #{record.handleDate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.resthome.pojo.CollectionCost" >
+    update collection_cost
+    <set >
+      <if test="oldmanId != null" >
+        oldman_id = #{oldmanId,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionCost != null" >
+        collection_cost = #{collectionCost,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionDate != null" >
+        collection_date = #{collectionDate,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionName != null" >
+        collection_name = #{collectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="handleName != null" >
+        handle_name = #{handleName,jdbcType=VARCHAR},
+      </if>
+      <if test="handleDate != null" >
+        handle_date = #{handleDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cost_id = #{costId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.resthome.pojo.CollectionCost" >
+    update collection_cost
+    set oldman_id = #{oldmanId,jdbcType=VARCHAR},
+      collection_cost = #{collectionCost,jdbcType=VARCHAR},
+      collection_date = #{collectionDate,jdbcType=VARCHAR},
+      collection_name = #{collectionName,jdbcType=VARCHAR},
+      handle_name = #{handleName,jdbcType=VARCHAR},
+      handle_date = #{handleDate,jdbcType=VARCHAR}
+    where cost_id = #{costId,jdbcType=VARCHAR}
+  </update>
+  
+<!--   List<CollectionCost> selectCollection(); -->
+<select id="selectCollection"    resultMap="BaseResultMap">
+	SELECT * FROM collection_cost c LEFT JOIN oldman o ON c.oldman_id= o.id
+
+		
+	</select>
+</mapper>

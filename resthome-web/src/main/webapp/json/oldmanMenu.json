@@ -1,0 +1,6 @@
+[
+		{ "id":"1001", "pId":"100", "name":"老人资料", "page":"page_recept_oldman.action"},
+		{ "id":"1001", "pId":"100", "name":"入住登记", "page":"page_recept_check-in.action"},
+		{ "id":"1002", "pId":"100", "name":"转房登记", "page":"page_recept_change-room.action"},
+		{ "id":"1003", "pId":"100", "name":"外出登记", "page":"page_recept_goOut.action"}
+]

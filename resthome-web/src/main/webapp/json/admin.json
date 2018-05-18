@@ -1,0 +1,7 @@
+[
+		{ "id":"1001", "pId":"100", "name":"员工信息", "page":"page_admin_userlist.action"},
+		{ "id":"1001", "pId":"100", "name":"员工调度", "page":"page_userManager_user-transfer.action"},
+		{ "id":"1001", "pId":"100", "name":"员工请假", "page":"page_userManager_user-leave.action"},
+		{ "id":"1002", "pId":"100", "name":"功能权限管理", "page":"page_admin_function.action"},
+		{ "id":"1003", "pId":"100", "name":"角色管理", "page":"page_admin_role.action"}
+]

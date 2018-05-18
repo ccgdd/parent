@@ -1,0 +1,6 @@
+[
+		{ "id":"1000", "pId":"100", "name":"代收费用", "page":"page_cost_collection-cost.action"},
+		{ "id":"1001", "pId":"100", "name":"费用结算", "page":"page_cost_cost-jiesuan.action"},
+		{ "id":"1002", "pId":"100", "name":"财务托管", "page":"page_cost_cost-tuoguan.action"}
+		
+]

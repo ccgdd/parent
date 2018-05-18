@@ -1,0 +1,221 @@
+.tbd 
+{
+       border-collapse:collapse;
+}
+.tbd td
+{
+    padding:5px;
+    font-size:12px;
+    border:1px solid #95B8E7;
+}
+.tbd th{
+    padding:5px;
+    font-size:12px;
+    border:1px solid #95B8E7;
+    background:#E0ECFF;
+    
+}
+
+.tbd2 
+{
+     border-color:#FFF ;
+	 margin:0px auto;
+	 line-height:25px;
+}
+.tbd2 td
+{
+    text-align:left;
+    padding:5px;
+    font-size:12px;
+    background:#FAFAFA;
+}
+.tbd2 th{
+    text-align:right;
+    padding:5px;
+    font-size:12px;
+	background:#E8E8E8;
+   
+    
+}
+
+.bar{   
+  background: #CBE9F3;
+  width: 100%;
+  height:1px;
+}
+.bar2{   
+  background: #0D93BF;
+  width: 99%;
+  height:1px;
+}
+/*按钮样式1*/
+.td-btn{width:90px;box-sizing:border-box;color:#fff;background:#55aae6;text-align:center;font-size:14px;font-family:microsoft yahei;letter-spacing:3px;height:30px;line-height:30px;margin-left:10px;border-radius:2px;cursor:pointer;}
+.td-btn:hover{background:#3087C5}
+
+/*按钮样式2*/
+a.ncsc-btn2 { font: normal 14px/20px "microsoft yahei"; text-decoration: none; color: #FFF; background-color: #5BB75B; text-align: center; vertical-align: middle; display: inline-block; height: 23px;width:60px; padding: 10px 10px; border: solid 1px; border-color: #DCDCDC #DCDCDC #B3B3B3 #DCDCDC; cursor: pointer;}
+a:hover.ncsc-btn2 { text-decoration: none; color: #FFF; background-color: #51A351; border-color: #499249 #499249 #3D7A3D #499249;}
+
+/*按钮样式3*/
+.btn3{width:60px;box-sizing:border-box;color:#fff;background:#55aae6;text-align:center;font-family:microsoft yahei;letter-spacing:2px;height:29px;line-height:29px;margin-top:5px;border-radius:2px;cursor:pointer;}
+.btn3:hover{background:#3087C5}
+
+/* tab样式 */
+ .tabmenu { width:100%; height: 38px; display: block; position: relative; z-index: 99;}
+.tabmenu .tab { height: 36px; border-bottom: solid 2px #27A9E3;}
+.tabmenu .tab li { float: left; margin-right: 3px;}
+.tabmenu .tab a { font: lighter 14px/33px "microsoft yahei"; color: #FFF; background-color: #AAA; display: inline-block; height: 33px; padding: 0 10px; }
+.tabmenu .tab a:hover { text-decoration: none; color:#FFF; background-color: #333; }
+.tabmenu .tab .ui-tabs-selected a { height:36px; color: #FFFFFF; background-color: #FFF; display: inline-block; padding: 0px 10px; border:0px; border-radius: 4px 4px 0 0; cursor: default; background-color: #27A9E3;}
+.tabmenu .tab .ui-tabs-selected a:hover { text-decoration: none; cursor: default;}
+.tabmenu .tab .active a { font: 18px/36px "microsoft yahei"; color: #FFF; background-color: #27A9E3; display: inline-block; height: 36px; padding: 0 20px; cursor: default;}
+.tabmenu .tab .active a:hover { text-decoration: none; cursor: default;}
+.tabmenu .tab .normal a { font: lighter 14px/33px "microsoft yahei"; color: #FFF; background-color: #AAA; display: inline-block; height: 33px; padding: 0 10px; }
+.tabmenu .tab .normal a:hover { text-decoration: none; color:#FFF; background-color: #333; }
+.tabmenu .text-intro { line-height: 20px; color: #999; position: absolute; z-index: 99; top:5px; right:5px;}
+.tabmenu a.ncsc-btn { position: absolute; z-index: 1; top: -2px; right: 0px;}
+.sticky .tabmenu { width: 960px; padding-top: 10px; padding-bottom: 10px; position: fixed; top: 0; }
+.sticky .tabmenu a.ncsc-btn { top: 8px;}
+
+  ul,li{list-style:none}
+  
+  /*定位管理样式*/
+  .hidden{display:none;}
+  a:hover{text-decoration:none;}
+  img{border:0;}
+  ul{padding:0;}
+  ul li{list-style:none;}
+   
+  .form-group{width:100%;overlfow:hidden;margin:15px auto;}
+  ul{width:100%;overflow:hidden;margin:5px auto;box-sizing:border-box;}
+  .col4{width:20%;float:left;padding:0 10px;box-sizing:border-box;}
+  .col4 .form-box{width:100%;box-sizing:border-box;overflow:hidden;height:40px;line-height:40px;}
+  .col4 .form-box .form-l{width:35%;min-width:72px;float:left;color:#1A7EAB;font-size:12px;font-weight:normal;}
+  .col4 .form-box .form-r{width:65%;float:left;}
+  .col4 .form-box .form-r input{width:100%;box-sizing:border-box;padding:5px;margin:5px auto;border:1px solid #95B8E7;border-radius:2px;}
+  .col4 .form-box .form-btn{width:60%;box-sizing:border-box;color:#fff;background:#55aae6;text-align:center;font-size:18px;font-family:microsoft yahei;letter-spacing:10px;height:29px;line-height:29px;margin-top:5px;border-radius:2px;cursor:pointer;}
+  .col4 .form-box .form-btn:hover{background:#3087C5}
+  .form-table{width:100%;box-sizing:border-box;padding-right:15px;overflow:hidden;float:left;}
+  .form-table table{width:100%;background:#ddd;box-sizing:border-box;}
+  .form-table table tr td{background:#fff;text-align:center;padding:7px 8px;font-size:12px;height:24px;box-sizing:border-box;}
+  .table-btn{display:inline-block;padding:0 5px;}
+  .map{width:60%;box-sizing:border-box;background:#eee;float:left;min-height:300px;}
+  .map img{width:100%;}
+   /*定位管理样式*/
+   
+ /*table样式 */  
+ .tb-type1  th{ 
+    padding-left:100px;    
+    height:40px;
+    
+    font-weight: bold;
+    color: #329ED1;
+    background-color: #F3FBFE;
+}
+
+.fz12{  font-size:12px; }
+.fz14{  font-size:14px; }
+.fz16{  font-size:16px; }
+
+.tips {
+  line-height: 26px;
+  color: #888;
+  padding-left: 60px;
+}
+.tips2 {
+  line-height: 26px;
+  color: #888;
+}  
+   
+.tb-type2{}	
+.tb-type2 th{   
+  font-size: 13px;
+  color: #333;
+  padding:5px 5px 3px 0px;
+  height:30px; border-top: 1px dotted #CBE9F3;
+}
+.tb-type2 td{ 
+  padding:5px 5px 3px 0px;
+  height:30px; 
+  border-top: 1px dotted #CBE9F3;
+  color:#555;
+}
+.tb-type2 .tfoot td {  padding:15px 5px 3px 100px; border-top: 1px solid #CBE9F3; }	
+.tb-type2 input[type="text"],textarea { 
+    padding-left:5px;
+    height: 20px;   
+    cursor: text;
+    border-radius: 4px;/*Firefox\Chrome\Safari\IE9\元素圆角效果*/ 
+    border: 1px solid;
+    border-color: #ABADB3 #E2E3EA #E2E3EA #ABADB3 /*#CBE9F3 #CBE9F3 #71CBEF*/;
+    resize: none;/*禁止调节元素的尺寸*/
+}
+.tb-type2 select { 
+    padding-left:5px;
+    height: 25px;   
+    cursor: text;
+    border-radius: 4px;/*Firefox\Chrome\Safari\IE9\元素圆角效果*/ 
+    border: 1px solid;
+    border-color: #ABADB3 #E2E3EA #E2E3EA #ABADB3 /*#CBE9F3 #CBE9F3 #71CBEF*/;
+    resize: none;/*禁止调节元素的尺寸*/
+}
+
+.tb-type2 div{
+    padding-top:20px;
+}
+.tb-type2 label{
+     font-weight:bold;
+     color: #555;
+     font: 12px ;
+}
+
+
+ .btns {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+  .btns-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+  .btns-success {
+    color: #fff;
+    background-color: #13c0ab;
+    border-color: #4cae4c;
+}
+
+
+
+
+
+/*table样式*/
+.wid60{   width:60px; }
+.wid100{   width:100px; }
+.wid150{   width:150px; }
+.wid250{   width:250px; }
+.wid256{   width:256px; }
+.wid400{   width: 400px!important;}
+.noborder, .noborder td{ border-bottom:0; border-top:0; }  
+
+/* fieldset */
+.fieldset{border:1px #ccc solid; text-align:left}
+
+.step_on{width: 150px;height: 35px;color: white;line-height: 35px;text-indent: 13px;font-weight: bold;float: left;display: inline-block;background-image: url("/Content/images/processtab1.png");}
+.step_off{width: 150px;height: 35px;color: white;line-height: 35px;text-indent: 13px;font-weight: bold;margin-left: -4px;float: left;display: inline-block;background-image: url("/Content/images/processtab2.png");}
+
+
+
